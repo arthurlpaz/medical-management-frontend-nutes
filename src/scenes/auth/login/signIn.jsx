@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -7,15 +7,15 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import {login} from "../../../services/auth";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../../../services/service.auth";
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://seniorsaudemovel.netlify.app/">
-                Sênior Saúde Móvel - Sênior Oculus
+                Arthur | Kaique | Joyce
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -24,19 +24,26 @@ function Copyright(props) {
 }
 
 function SignIn() {
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjFjZTc3ZTk2MmM3MmM2YzU1NzNhMjA5Y2U5MWZjNjExIn0.e30.dSWAdZItBouMaKpgyl0tFw8GA-bCJtoGIHeisEtdN7msK_Q64xa-jQTiz6IABEY5WtzaJ7qVnJOUUGj0wWk6eg";
+    /// const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjFjZTc3ZTk2MmM3MmM2YzU1NzNhMjA5Y2U5MWZjNjExIn0.e30.dSWAdZItBouMaKpgyl0tFw8GA-bCJtoGIHeisEtdN7msK_Q64xa-jQTiz6IABEY5WtzaJ7qVnJOUUGj0wWk6eg";
 
-    const handleSubmit = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-        login(token)
+
+        //const data = new FormData(event.currentTarget);
+
+        try {
+            const data = {email, password};
+            navigate("/Home");
+            console.log(data);
+            await signIn(data);
+        } 
+        catch (error) {
+            console.log(error);    
+        }
     };
 
     const handleSignup = () => {
@@ -58,8 +65,10 @@ function SignIn() {
                 <Typography component="h1" variant="h5">
                     Login
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 1 }}>
                     <TextField
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         margin="normal"
                         required
                         fullWidth
@@ -70,6 +79,8 @@ function SignIn() {
                         autoFocus
                     />
                     <TextField
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         margin="normal"
                         required
                         fullWidth
