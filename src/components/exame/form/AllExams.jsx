@@ -20,7 +20,7 @@ const AllExams = () => {
         borderRadius="10px"
         p="10px"
         maxHeight="170px"
-        maxWidth="600px"
+        width="600px"
         display="flex"
         flexDirection="column"
         justifyContent="space-between" 
@@ -30,7 +30,7 @@ const AllExams = () => {
          
         {
             
-            exams?.length >0 ?(
+            exams?.length > 0 ? (
             <table>
                 <thead>
                     <th>Nome</th>

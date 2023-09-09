@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -6,13 +6,14 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import {useNavigate} from "react-router-dom";
+import { signUp } from '../../../services/service.auth';
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://seniorsaudemovel.netlify.app/">
-                Sênior Saúde Móvel - Sênior Oculus
+            <Link color="inherit" href="">
+                Arthur | Kaique | Joyce
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -21,16 +22,35 @@ function Copyright(props) {
 }
 
 function SignUp() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [isRegistered, setIsRegistered] = useState(false);
 
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSignUp = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+
+        try {
+            const data = {
+                name,
+                email,
+                password, 
+                confirmPassword
+            }
+            
+            console.log(data);
+
+            await signUp(data);
+            setIsRegistered(true);
+        } 
+        catch (error) {
+            console.log("Registration failed: ", error);
+        }
+        //const data = new FormData(event.currentTarget);
+        
     };
 
     const handleSignin = () => {
@@ -52,10 +72,12 @@ function SignUp() {
                 <Typography component="h1" variant="h5">
                     Cadastro
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Box component="form" noValidate onSubmit={handleSignUp} sx={{ mt: 1 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12}>
                             <TextField
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 autoComplete="given-name"
                                 name="nome"
                                 required
@@ -65,18 +87,10 @@ function SignUp() {
                                 autoFocus
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                fullWidth
-                                id="sobrenome"
-                                label="Sobrenome"
-                                name="lastName"
-                                autoComplete="family-name"
-                            />
-                        </Grid>
                         <Grid item xs={12}>
                             <TextField
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                                 fullWidth
                                 id="email"
@@ -87,6 +101,8 @@ function SignUp() {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                                 fullWidth
                                 name="senha"
@@ -98,15 +114,23 @@ function SignUp() {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
                                 fullWidth
                                 name="senha"
-                                label="Repita a Senha"
+                                label="Confirme sua Senha"
                                 type="password"
                                 id="repetPassword"
                                 autoComplete="new-password"
                             />
                         </Grid>
+
+                        {isRegistered && (
+                            <Grid item xs={12}>
+                                <p>Registro feito! Agora acesse pela página de login</p>
+                            </Grid>
+                        )}
                     </Grid>
                     <Button
                         type="submit"
