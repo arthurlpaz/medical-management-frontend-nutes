@@ -80,3 +80,30 @@ body,
 .breadcrumbs .crumb a {
     color: #ddd;
 }
+
+
+.textareaNotes{
+    border: none;
+    resize: none;
+    background: none;
+    cursor:default;
+    font-family: 'Source Code Pro', sans-serif;;
+  }
+
+  
+.textareaNotes:focus{
+    outline: none;
+    cursor: default;
+  }
+  
+  ::placeholder{
+    color: azure;
+  }
+  
+  :focus::placeholder{
+    color: transparent;
+  }
+  
+  .delete-icon{
+    cursor: pointer;
+  }
