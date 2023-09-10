@@ -6,7 +6,8 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { useContext, useState } from "react";
-import { PacientContext } from "../../contexts/PacientsContext";
+import { PacientContext } from "../../context/PacientsContext";
+
 import { useEffect } from "react";
 import AddFormPacients from "./AddFormPacients";
 const PacientsList = () => {

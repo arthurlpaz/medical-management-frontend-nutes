@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import PacientContextProvider from "../../context/PacientsContext";
 import PacientsListInjured from "../../components/patient/PacientsListInjured";
@@ -12,7 +12,14 @@ function MonitorarLesao() {
     return (
 
         <Box m="20px" >
-            <h3>Monitorar Lesão</h3>
+            <Typography
+                variant="h3"
+                fontWeight="600"
+                mb="10px"
+                color={colors.grey[100]}
+            >
+                Monitorar Lesão
+            </Typography>
 
             <Box
                 display="grid"

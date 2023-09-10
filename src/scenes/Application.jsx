@@ -27,7 +27,7 @@ function Application() {
                                 <Route path="/Home" element={<Home />} />
                                 <Route path="/registrar-paciente" element={<Register />} />
                                 <Route path='/monitorar-lesao' element={<MonitorarLesao />} />
-                                <Route path='/update' element={<Update />} />
+                                <Route path='/update/:id' element={<Update/>}></Route>
                                 <Route path='/edit-exam/:id' element={<ExamPopup open={true} />} />
                             </Routes>
                         </div>

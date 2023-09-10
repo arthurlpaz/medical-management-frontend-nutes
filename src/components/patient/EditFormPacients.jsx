@@ -4,7 +4,7 @@ import {
     Dialog, FormControl, FormGroup, Input, InputLabel 
 } from "@mui/material";
 import { useContext, useState } from "react";
-import { PacientContext } from "../../context/PacientsContext"
+import { PacientContext } from "../../context/PacientsContext";
 
 const EditFormPacient =({thePacient}) =>{
 

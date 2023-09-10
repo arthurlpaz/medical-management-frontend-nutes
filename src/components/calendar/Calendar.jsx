@@ -91,7 +91,16 @@ const Calendar = () =>{
 
     return(
         <Box  m="20px" >
-            <h3>Home</h3>
+            <Typography
+                variant="h3"
+                fontWeight="600"
+                mb="20px"
+                
+                color={colors.grey[100]}
+            >
+                Home
+            </Typography>
+            
             
             <Box
             display="grid"

@@ -4,12 +4,12 @@ import {
 } from "@mui/material";
 
 import { useContext, useState } from "react";
-import { PacientContext } from "../../context/PacientsContext"
-
+import { PacientContext } from "../../context/PacientsContext";
 
 
 const AddFormPacients = () =>{
 
+    
     const {addPacient} = useContext(PacientContext)
 
     const [newPacient, setNewPacient] = useState({
