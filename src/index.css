@@ -107,3 +107,8 @@ body,
   .delete-icon{
     cursor: pointer;
   }
+
+  table {
+    border-collapse: separate; /* Garante que as bordas das células não se sobreponham */
+    border-spacing: 2px; /* Define o espaçamento entre as células da tabela (ajuste conforme necessário) */
+  }

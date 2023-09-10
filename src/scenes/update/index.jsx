@@ -71,8 +71,21 @@ function Update(){
     return(
 
         <Box  m="20px" >
+<<<<<<< Updated upstream
             <h3>Registrar Dados do Paciente</h3>
 
+=======
+            
+            <Typography
+                variant="h3"
+                fontWeight="600"
+                mb="10px"
+                color={colors.grey[100]}
+            >
+                Registrar Dados Médicos do Paciente
+            </Typography>
+            
+>>>>>>> Stashed changes
             <Box
                 display="grid"
                 gridTemplateColumns="repeat(12, 1fr)"
