@@ -16,6 +16,8 @@ export default function MenuUser() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
+    const navigate = useNavigate();
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -25,6 +27,11 @@ export default function MenuUser() {
 
     const handleLogout = () => {
         authLogout();
+
+        navigate("/auth/signin");
+
+        // Recarrega a página automaticamente
+        window.location.reload();
     }
 
     return (
