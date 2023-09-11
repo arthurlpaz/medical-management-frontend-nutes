@@ -3,6 +3,7 @@ import api from "./service";
 export const ACESS_TOKEN_KEY = "@"
 
 export function isAuth() {
+    console.log(localStorage.getItem(ACESS_TOKEN_KEY));
     return localStorage.getItem(ACESS_TOKEN_KEY) !== null;
 }
 
