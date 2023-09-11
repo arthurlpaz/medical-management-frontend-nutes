@@ -10,6 +10,7 @@ import Register from "./register";
 import MonitorarLesao from "./monitor";
 import Update from "./update";
 import ExamPopup from "../components/exame/popup/ExamPopup";
+import PerfilMed from "./perfilMed";
 
 function Application() {
     const [theme, colorMode] = useMode();
@@ -28,6 +29,7 @@ function Application() {
                                 <Route path="/registrar-paciente" element={<Register />} />
                                 <Route path='/monitorar-lesao' element={<MonitorarLesao />} />
                                 <Route path='/update/:id' element={<Update/>}></Route>
+                                <Route path="/perfil" element={<PerfilMed />} />
                                 <Route path='/edit-exam/:id' element={<ExamPopup open={true} />} />
                             </Routes>
                         </div>

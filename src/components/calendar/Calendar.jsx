@@ -22,6 +22,7 @@ const Calendar = () =>{
     const colors = tokens(theme.palette.mode)
     const[currentEvents, setCurrentEvents] = useState([])
 
+    const calendarRef = useRef(null)
     
     const handleDateClick = (selected) =>{
         const title = prompt("Please enter a new title for your event")
@@ -31,7 +32,7 @@ const Calendar = () =>{
 
     if(title){
         calendarApi.addEvent({
-            id: `${selected.dateStr} - ${title}`,
+            id: nanoid(), //`${selected.dateStr} - ${title}`,
             title,
             start: selected.startStr,
             end: selected.endStr,
@@ -81,11 +82,36 @@ const Calendar = () =>{
         )
     },[notes])
 
-    const handleEventClick = (selected) =>{
-        if(window.confirm(`Are you sure you want to delet the event '${selected.event.title}'`)){
-            selected.event.remove()
-        }
+    const handleEventClick = (event) => {
+        if (
+            window.confirm(`Are you sure you want to delete the event '${event.title}'`)
+          ) {
+            // Remove the event from the currentEvents array
+            const updatedEvents = currentEvents.filter((evt) => evt.id !== event.id);
+            setCurrentEvents(updatedEvents);
+      
+            // Update local storage
+            localStorage.setItem("currentEvents", JSON.stringify(updatedEvents));
+      
+            // Refresh the FullCalendar events by setting the state
+            const calendarApi = calendarRef.current?.getApi(); // Use optional chaining
+            if (calendarApi) {
+              calendarApi.removeAllEvents();
+              calendarApi.addEventSource(updatedEvents);
+            }}
     }
+
+    useEffect(() => {
+        const savedEvents = localStorage.getItem("currentEvents");
+        if (savedEvents) {
+            setCurrentEvents(JSON.parse(savedEvents));
+            
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("currentEvents", JSON.stringify(currentEvents));
+    }, [currentEvents]);
 
  
 
@@ -211,9 +237,9 @@ const Calendar = () =>{
                             eventClick={handleEventClick}
                             eventsSet={(events) => setCurrentEvents(events)}
                             initialEvents={[
-                                { id: "1234", title: "All-day event", date: "2023-07-14" },
-                                { id: "4321", title: "Timed event", date: "2023-07-22" },
-                                { id: "1323", title: "Project Apresentation", date: "2023-09-12"}
+                                { id: nanoid(), title: "All-day event", date: "2023-07-14" },
+                                { id: nanoid(), title: "Timed event", date: "2023-07-22" },
+                                { id: nanoid(), title: "Project Apresentation", date: "2023-09-12"}
                             ]}
                         />
                     </Box>
