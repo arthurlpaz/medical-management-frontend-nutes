@@ -10,10 +10,6 @@ const PerfilContextProvider = (props) =>{
         {
             id: uuidv4(),
             name: 'Nome do Médico',
-            age: 22, 
-            genre: 'Masculino',
-            height: 1.77, 
-            weight: 78, 
             email: 'medico@gmail.com',
             adress: { 
                 street: 'rua alguma coisa', 
@@ -22,7 +18,9 @@ const PerfilContextProvider = (props) =>{
             }, 
             contact_emergency: '83999018176', 
             contact_personal: '83999018179', 
-            speciality: "Médico geral" }
+            speciality: "Médico geral",
+            date_birthday: "20/09/1990"
+         }
     ])
 
     //sending the updated data to local storage

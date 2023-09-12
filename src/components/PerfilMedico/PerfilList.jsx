@@ -1,4 +1,3 @@
-
 import { Box, IconButton, Typography, useTheme, Dialog, Button, InputLabel,FormGroup, FormControl, Input } from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { tokens } from "../../theme";
@@ -56,11 +55,8 @@ const PerfilList = () => {
                 overflow="auto"
                 textAlign="center"
             >
-        
-
                 <table>
                     <thead>
-                        <tr>
                             <th>Nome</th>
                             <th>Email</th>
                             <th >Rua</th>
@@ -70,14 +66,11 @@ const PerfilList = () => {
                             <th>Contato de Emergência</th>
                             <th>Especialidade</th>
                             <th>Data de Aniversário</th>
-                            <th>Ação</th>
-                        </tr>
                     </thead>
                     <tbody>
                         {perfils.map(perfil => (
                             <tr key={perfil.id}>
-                                <PerfilMedic perfil={perfil}  />
-                                
+                                <PerfilMedic perfil={perfil}  />  
                             </tr>
 
                         ))}

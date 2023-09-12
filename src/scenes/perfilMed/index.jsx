@@ -4,6 +4,7 @@ import PacientContextProvider from "../../context/PacientsContext";
 import PacientsListInjured from "../../components/patient/PacientsListInjured";
 import PerfilContextProvider, { PerfilContext } from "../../context/PerfilContext";
 import PerfilList from "../../components/PerfilMedico/PerfilList";
+import PerfilMedic from "../../components/PerfilMedico/PerfilMedic";
 
 function PerfilMed() {
 
@@ -38,7 +39,7 @@ function PerfilMed() {
                     backgroundColor={colors.primary[400]}
                 >
                     <PerfilContextProvider>
-                      <PerfilList/>
+                      <PerfilMedic/>
                     </PerfilContextProvider>
                 </Box>
             </Box>

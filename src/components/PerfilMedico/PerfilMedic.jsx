@@ -38,6 +38,7 @@ const PerfilMedic = ({perfil}) =>{
          <td><IconButton onClick={handleShow}  ><EditIcon /></IconButton>
             <IconButton onClick={() => deletePerfil(perfil.id)}  ><DeleteIcon /></IconButton></td> 
 
+
         <Dialog open={show} onClose={handleClose} fullWidth>
             <EditFormPerfil thePerfil={perfil} />
             <Box
