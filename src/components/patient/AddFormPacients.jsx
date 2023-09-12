@@ -1,32 +1,67 @@
-import { 
-    Box, useTheme, Typography, IconButton, Button,
-    Dialog, FormControl, FormGroup, Input, InputLabel 
+import {
+    Box, useTheme, Typography, IconButton, Button, MenuItem,
+    Dialog, FormControl, FormGroup, Input, InputLabel, Select
 } from "@mui/material";
 
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
+import api from "../../services/service";
 
 
-const AddFormPacients = () =>{
+const AddFormPacients = () => {
 
-    
-    const {addPacient} = useContext(PacientContext)
+
+    const { addPacient } = useContext(PacientContext)
 
     const [newPacient, setNewPacient] = useState({
-        name:"", age:"", genre:"", height:"", weight:"", email:"", street:"", number:"", city:"", contact_emergency:"", contact_personal:"", injured:""
+        name: "", age: "", genre: "", height: "", weight: "", email: "", street: "", number: "", city: "", contact_emergency: "", contact_personal: "", injured: ""
     })
 
-    const onInputChange = (e) =>{
-        setNewPacient({...newPacient, [e.target.name]: e.target.value})
+    const onInputChange = (e) => {
+        setNewPacient({ ...newPacient, [e.target.name]: e.target.value })
     }
-    const {name, email, street,number, city, age, genre, height, weight,  contact_emergency, contact_personal, injured} = newPacient
+    const { name, email, street, number, city, age, genre, height, weight, contact_emergency, contact_personal, injured } = newPacient
 
-    const handleSubmitPres = (e) =>{
+    const handleSubmitPres = async (e) => {
         e.preventDefault()
-        addPacient(name, email, street,number, city, age, genre, height, weight,  contact_emergency, contact_personal, injured)
+
+        const injuredValue = injured === "true";
+
+        try {
+            const response = await api.post("/v1/athletes/", newPacient)
+
+            if (response.status === 201) {
+                // Limpar form após sucesso
+                setNewPacient({
+                    name: "",
+                    age: "",
+                    genre: "",
+                    height: "",
+                    weight: "",
+                    email: "",
+                    street: "",
+                    number: "",
+                    city: "",
+                    contact_emergency: "",
+                    contact_personal: "",
+                    injured: injuredValue
+                });
+
+                addPacient(newPacient);
+
+                alert("Paciente adicionado com sucesso!");
+            }
+            else {
+                // Se o servidor respondeu com um código de status diferente de 201
+                console.error("Erro ao adicionar paciente. Código de status:", response.status);
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    return(
+    return (
         <><Box>
             <FormGroup >
                 <Typography m="20px" ml="28px" mb="0px" variant="h3"> Adicionar Prescrição</Typography>
@@ -48,11 +83,16 @@ const AddFormPacients = () =>{
                 </FormControl>
                 <FormControl sx={{ m: "10px  20px 10px", p: "10px" }}>
                     <InputLabel><Typography variant="h5">Gênero</Typography></InputLabel>
-                    <Input
-                        type="text"
+                    <Select
                         name="genre"
                         onChange={(e) => onInputChange(e)}
-                        value={genre} />
+                        value={newPacient.genre}
+                    >
+                        <MenuItem value="">Selecione o Gênero</MenuItem>
+                        <MenuItem value="Masculino">Masculino</MenuItem>
+                        <MenuItem value="Feminino">Feminino</MenuItem>
+                        <MenuItem value="Outro">Outro</MenuItem>
+                    </Select>
                 </FormControl>
                 <FormControl sx={{ m: "10px  20px 10px", p: "10px" }}>
                     <InputLabel><Typography variant="h5">Altura</Typography></InputLabel>
@@ -126,25 +166,24 @@ const AddFormPacients = () =>{
                         onChange={(e) => onInputChange(e)}
                         value={injured} />
                 </FormControl>
-                
+
 
 
             </FormGroup>
         </Box>
-        
-        <Box
-            display="flex"
-            justifyContent="end"
-            flexDirection="row"
-            alignItems="center"
-            mr="30px"
-            mb="0px"
-        >
-                <Button onClick={handleSubmitPres} variant="contained" sx={{ m: "0px", p: "10px" }}><Typography>salvar</Typography></Button>
-        </Box></>
-    
-    )
 
+            <Box
+                display="flex"
+                justifyContent="end"
+                flexDirection="row"
+                alignItems="center"
+                mr="30px"
+                mb="0px"
+            >
+                <Button onClick={handleSubmitPres} variant="contained" sx={{ m: "0px", p: "10px" }}><Typography>salvar</Typography></Button>
+            </Box></>
+
+    )
 }
 
 export default AddFormPacients;

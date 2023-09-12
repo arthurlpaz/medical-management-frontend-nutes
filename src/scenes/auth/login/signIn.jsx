@@ -46,10 +46,10 @@ function SignIn() {
         event.preventDefault();
         
         try {
+            navigate("/Home");
             const data = {email, password};
             console.log(data);
             await signIn(data);
-            navigate("/home");
         }
         catch(err) {
             console.log(err);
