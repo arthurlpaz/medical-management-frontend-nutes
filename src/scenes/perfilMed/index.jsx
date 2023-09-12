@@ -2,6 +2,8 @@ import { Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import PacientContextProvider from "../../context/PacientsContext";
 import PacientsListInjured from "../../components/patient/PacientsListInjured";
+import PerfilContextProvider, { PerfilContext } from "../../context/PerfilContext";
+import PerfilList from "../../components/PerfilMedico/PerfilList";
 
 function PerfilMed() {
 
@@ -35,7 +37,9 @@ function PerfilMed() {
                     gridRow="span 4"
                     backgroundColor={colors.primary[400]}
                 >
-                    <p>vsv</p>
+                    <PerfilContextProvider>
+                      <PerfilList/>
+                    </PerfilContextProvider>
                 </Box>
             </Box>
         </Box>

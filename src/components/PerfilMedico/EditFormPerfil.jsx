@@ -4,10 +4,9 @@ import {
 } from "@mui/material";
 
 import { useContext, useState } from "react";
-import { PacientContext } from "../../context/PacientsContext";
+import { PerfilContext } from "../../context/PerfilContext";
 
-
-const EditFormPerfil = () =>{
+const EditFormPerfil = ({thePerfil}) =>{
 
     
     const {updatePerfil} = useContext(PerfilContext)
@@ -21,8 +20,8 @@ const EditFormPerfil = () =>{
     const[city, setCity] = useState(thePerfil.city);
     const[contact_emergency, setContactEmergency] = useState(thePerfil.contact_emergency)
     const[contact_personal, setContactPersonal] = useState(thePerfil.contact_personal)
-    const[speciality, setSpeciality] = useState(thePacient.speciality)
-    const[date_birthday, setDate_birthday] = useState(thePacient.date_birthday)
+    const[speciality, setSpeciality] = useState(thePerfil.speciality)
+    const[date_birthday, setDate_birthday] = useState(thePerfil.date_birthday)
 
     const updatedPerfil = {id, name, email, street,number, city, contact_personal, contact_emergency,  speciality, date_birthday}
 

@@ -3,11 +3,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from "@mui/icons-material/Delete";
-import { PacientContext } from "../../context/PacientsContext";
+import { PerfilContext } from "../../context/PerfilContext";
 import { useState, useContext } from "react";
 import { useEffect } from "react";
-import EditFormPacient from "./EditFormPacients";
+import EditFormPerfil from "./EditFormPerfil";
 import { useNavigate } from "react-router-dom";
+
 
 const PerfilMedic = ({perfil}) =>{
 
@@ -36,7 +37,6 @@ const PerfilMedic = ({perfil}) =>{
        
          <td><IconButton onClick={handleShow}  ><EditIcon /></IconButton>
             <IconButton onClick={() => deletePerfil(perfil.id)}  ><DeleteIcon /></IconButton></td> 
-
 
         <Dialog open={show} onClose={handleClose} fullWidth>
             <EditFormPerfil thePerfil={perfil} />
