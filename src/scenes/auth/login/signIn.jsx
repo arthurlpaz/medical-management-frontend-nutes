@@ -40,7 +40,7 @@ function SignIn() {
 
     const navigate = useNavigate();
 
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjFjZTc3ZTk2MmM3MmM2YzU1NzNhMjA5Y2U5MWZjNjExIn0.e30.dSWAdZItBouMaKpgyl0tFw8GA-bCJtoGIHeisEtdN7msK_Q64xa-jQTiz6IABEY5WtzaJ7qVnJOUUGj0wWk6eg";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyYmZmZDAwNDE2OTNiNjJjZTdiZSIsImlhdCI6MTY5NDQ4NjA1NSwiZXhwIjoxNjk1MDkwODU1fQ.E0va0yfi0k9GaD5_MkITEgAkhPBb2RiVDOVAlMBml-0";
 
     const handleLogin = async (event) => {
         event.preventDefault();
