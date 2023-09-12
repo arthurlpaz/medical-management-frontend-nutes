@@ -1,17 +1,12 @@
-import Pacient from "./Pacient";
-import { Box, IconButton, Typography, useTheme, Dialog, Button } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from '@mui/icons-material/Visibility';
+
+import { Box, IconButton, Typography, useTheme, Dialog, Button, InputLabel,FormGroup, FormControl, Input } from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { useContext, useState } from "react";
-import { PacientContext } from "../../context/PacientsContext";
-
+import { PerfilContext } from "../../context/PerfilContext";
 import { useEffect } from "react";
-import AddFormPacients from "./AddFormPacients";
-
-
+import AddFormPerfil from "./AddFormPerfil";
+import PerfilMedic from "./PerfilMedic";
 
 const PerfilList = () => {
 
@@ -82,6 +77,7 @@ const PerfilList = () => {
                         {perfils.map(perfil => (
                             <tr key={perfil.id}>
                                 <PerfilMedic perfil={perfil}  />
+                                
                             </tr>
 
                         ))}
@@ -89,7 +85,7 @@ const PerfilList = () => {
                 </table>
             </Box>
             </Box>
-            <Dialog open={show} onClose={handleClosePacient} fullWidth>
+            <Dialog open={show} onClose={handleClosePerfil} fullWidth>
                 <AddFormPerfil/>
                 <Box
                     display="flex"

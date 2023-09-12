@@ -7,9 +7,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
-
 import { useEffect } from "react";
 import AddFormPacients from "./AddFormPacients";
+
 const PacientsList = () => {
 
     const theme = useTheme();
