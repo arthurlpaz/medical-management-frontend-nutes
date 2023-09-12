@@ -5,7 +5,7 @@ import {
 
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
-import api from "../../services/service";
+import api from "../../services/service"
 
 
 const AddFormPacients = () => {
@@ -14,18 +14,16 @@ const AddFormPacients = () => {
     const { addPacient } = useContext(PacientContext)
 
     const [newPacient, setNewPacient] = useState({
-        name: "", age: "", genre: "", height: "", weight: "", email: "", street: "", number: "", city: "", contact_emergency: "", contact_personal: "", injured: ""
+        name: "", age: "", gender: "", height: "", weight: "", email: "", street: "", number: "", city: "", contact_emergency: "", contact_personal: "", injured: false
     })
 
     const onInputChange = (e) => {
         setNewPacient({ ...newPacient, [e.target.name]: e.target.value })
     }
-    const { name, email, street, number, city, age, genre, height, weight, contact_emergency, contact_personal, injured } = newPacient
+    const { name, email, street, number, city, age, gender, height, weight, contact_emergency, contact_personal, injured } = newPacient
 
     const handleSubmitPres = async (e) => {
-        e.preventDefault()
-
-        const injuredValue = injured === "true";
+        e.preventDefault();
 
         try {
             const response = await api.post("/v1/athletes/", newPacient)
@@ -35,7 +33,7 @@ const AddFormPacients = () => {
                 setNewPacient({
                     name: "",
                     age: "",
-                    genre: "",
+                    gender: "",
                     height: "",
                     weight: "",
                     email: "",
@@ -44,7 +42,7 @@ const AddFormPacients = () => {
                     city: "",
                     contact_emergency: "",
                     contact_personal: "",
-                    injured: injuredValue
+                    injured: false
                 });
 
                 addPacient(newPacient);
@@ -84,9 +82,9 @@ const AddFormPacients = () => {
                 <FormControl sx={{ m: "10px  20px 10px", p: "10px" }}>
                     <InputLabel><Typography variant="h5">Gênero</Typography></InputLabel>
                     <Select
-                        name="genre"
+                        name="gender"
                         onChange={(e) => onInputChange(e)}
-                        value={newPacient.genre}
+                        value={gender}
                     >
                         <MenuItem value="">Selecione o Gênero</MenuItem>
                         <MenuItem value="Masculino">Masculino</MenuItem>
@@ -160,11 +158,16 @@ const AddFormPacients = () => {
                 </FormControl>
                 <FormControl sx={{ m: "10px  20px 10px", p: "10px" }}>
                     <InputLabel><Typography variant="h5">Lesionado</Typography></InputLabel>
-                    <Input
+                    <Select
                         type="boolean"
                         name="injured"
+                        defaultValue={injured}
                         onChange={(e) => onInputChange(e)}
-                        value={injured} />
+                        value={injured}
+                    >
+                        <MenuItem value="true">Sim</MenuItem>
+                        <MenuItem value="false">Não</MenuItem>
+                    </Select>
                 </FormControl>
 
 

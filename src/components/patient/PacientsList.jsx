@@ -15,7 +15,7 @@ const PacientsList = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const{pacients} = useContext(PacientContext)
+    const{pacients} = useContext(PacientContext);
     
     const [show, setShow] = useState(true)
     const handleShowPacient = () => setShow(true)
@@ -78,12 +78,15 @@ const PacientsList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {pacients.map(pacient => (
-                            <tr key={pacient.id}>
+                        {
+                        pacients ?
+                        pacients.map(pacient => (
+                            <tr key={pacient._id}>
                                 <Pacient pacient={pacient} acao={acao} />
                             </tr>
-
-                        ))}
+                        )):
+                        <h1> Não há pacientes!
+                            </h1>}
                     </tbody>
                 </table>
             </Box>
