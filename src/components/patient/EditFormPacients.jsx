@@ -5,8 +5,12 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
+import { tokens } from "../../theme";
 
 const EditFormPacient =({thePacient}) =>{
+
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);    
 
     const {updatePacient} = useContext(PacientContext)
     //como mater as informações no form para que sejam editadas
@@ -158,7 +162,16 @@ const EditFormPacient =({thePacient}) =>{
             mr="30px"
             mb="0px"
         >
-                <Button onClick={handleSubmit} variant="contained" sx={{ m: "0px", p: "10px" }}><Typography>salvar</Typography></Button>
+                <Button 
+                    style={{
+                        background: theme.palette.mode === "dark" ? colors.blueAccent[900] : colors.greenAccent[400],
+                    }} 
+                    onClick={handleSubmit} 
+                    variant="contained" 
+                    sx={{ m: "0px", p: "10px" }}>
+
+                    <Typography>salvar</Typography>
+                </Button>
         </Box></>
     )
 }

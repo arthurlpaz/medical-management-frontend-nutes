@@ -1,11 +1,17 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Typography } from '@mui/material';
-
+import { Box, Typography, useTheme } from '@mui/material';
+import { tokens } from "../../theme";
 
 const Note =({id, text, date, handleDeleteNote})=>{
+
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+
     return (
     <Box 
-        bgcolor="grey"
+        style={{
+        background: theme.palette.mode === "dark" ? colors.grey[300] : colors.grey[900],
+        }} 
         borderRadius="10px"
         p="10px"
         maxHeight="170px"

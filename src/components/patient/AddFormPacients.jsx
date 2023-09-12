@@ -2,7 +2,7 @@ import {
     Box, useTheme, Typography, IconButton, Button, MenuItem,
     Dialog, FormControl, FormGroup, Input, InputLabel, Select
 } from "@mui/material";
-
+import { tokens } from "../../theme";
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
 import api from "../../services/service";
@@ -10,6 +10,8 @@ import api from "../../services/service";
 
 const AddFormPacients = () => {
 
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
 
     const { addPacient } = useContext(PacientContext)
 
@@ -180,7 +182,16 @@ const AddFormPacients = () => {
                 mr="30px"
                 mb="0px"
             >
-                <Button onClick={handleSubmitPres} variant="contained" sx={{ m: "0px", p: "10px" }}><Typography>salvar</Typography></Button>
+                <Button 
+                    style={{
+                        background: theme.palette.mode === "dark" ? colors.blueAccent[900] : colors.greenAccent[400],
+                    }} 
+                    onClick={handleSubmitPres} 
+                    variant="contained" 
+                    sx={{ m: "0px", p: "10px" }}>
+
+                    <Typography>salvar</Typography>
+                </Button>
             </Box></>
 
     )

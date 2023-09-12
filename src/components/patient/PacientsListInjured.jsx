@@ -45,7 +45,9 @@ const PacientsListInjured = () => {
             </Box>
             
             <Box
-                bgcolor="grey"
+                style={{
+                    background: theme.palette.mode === "dark" ? colors.greenAccent[600] : colors.grey[900],
+                }} 
                 borderRadius="10px"
                 p="10px"
                 m="20px"

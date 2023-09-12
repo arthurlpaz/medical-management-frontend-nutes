@@ -1,4 +1,4 @@
-import { Box, IconButton, Dialog, Button, Typography, Link } from "@mui/material";
+import { Box, IconButton, useTheme, Dialog, Button, Typography, Link } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -8,8 +8,12 @@ import { useState, useContext } from "react";
 import { useEffect } from "react";
 import EditFormPacient from "./EditFormPacients";
 import { useNavigate } from "react-router-dom";
+import { tokens } from "../../theme";
 
 const Pacient = ({pacient, acao}) =>{
+
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
 
     const [show, setShow] = useState(false)
     const handleShow = () => setShow(true)
@@ -56,7 +60,16 @@ const Pacient = ({pacient, acao}) =>{
                 mb="10px"
             >
                 
-                <Button onClick={handleClose} variant="contained" sx={{ m: "10px", p: "10px" }}><Typography>fechar</Typography></Button>
+                <Button 
+                    style={{
+                        background: theme.palette.mode === "dark" ? colors.blueAccent[900] : colors.greenAccent[400],
+                    }} 
+                    onClick={handleClose} 
+                    variant="contained" 
+                    sx={{ m: "10px", p: "10px" }}>
+
+                    <Typography>fechar</Typography>
+                </Button>
             </Box>
         </Dialog> 
         </>

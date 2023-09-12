@@ -1,12 +1,13 @@
-import { Box, Button } from "@mui/material"
+import { Box, Button, useTheme } from "@mui/material"
 import { useState } from "react";
 import axios from "axios";
-
+import { tokens } from "../../theme";
 
 const AddNote = ({handleAddNote}) =>{
 
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const [noteText, setNoteText] = useState('')
-
 
     const characterLimit = 500
 
@@ -26,7 +27,9 @@ const AddNote = ({handleAddNote}) =>{
 
     return(
         <Box
-        bgcolor="grey"
+        style={{
+            background: theme.palette.mode === "dark" ? colors.grey[300] : colors.grey[900],
+        }} 
         borderRadius="10px"
         p="10px"
         maxHeight="170px"

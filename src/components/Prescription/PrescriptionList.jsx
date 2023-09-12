@@ -50,7 +50,9 @@ const PrescriptionList = () =>{
             </IconButton> 
         </Box>
         <Box
-            bgcolor="grey"
+            style={{
+                background: theme.palette.mode === "dark" ? colors.greenAccent[500] : colors.grey[800],
+            }} 
             borderRadius="10px"
             p="10px"
             m="20px"

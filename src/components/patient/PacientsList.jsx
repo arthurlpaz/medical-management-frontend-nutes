@@ -45,7 +45,9 @@ const PacientsList = () => {
             </Box>
 
             <Box
-                bgcolor="grey"
+                style={{
+                    background: theme.palette.mode === "dark" ? colors.greenAccent[600] : colors.grey[900],
+                }} 
                 borderRadius="10px"
                 p="10px"
                 m="20px"
@@ -98,7 +100,16 @@ const PacientsList = () => {
                     mr="20px"
                     mb="10px"
                 >
-                    <Button onClick={handleClosePacient} variant="contained" sx={{ m: "10px", p: "10px" }}><Typography>fechar</Typography></Button>
+                    <Button 
+                        style={{
+                            background: theme.palette.mode === "dark" ? colors.blueAccent[900] : colors.greenAccent[400],
+                        }} 
+                        onClick={handleClosePacient} 
+                        variant="contained" 
+                        sx={{ m: "10px", p: "10px" }}>
+
+                        <Typography>fechar</Typography>
+                    </Button>
                 </Box>
 
             </Dialog></>

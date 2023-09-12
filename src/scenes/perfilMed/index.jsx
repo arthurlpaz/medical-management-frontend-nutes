@@ -39,7 +39,7 @@ function PerfilMed() {
                     backgroundColor={colors.primary[400]}
                 >
                     <PerfilContextProvider>
-                      <PerfilMedic/>
+                      <PerfilList/>
                     </PerfilContextProvider>
                 </Box>
             </Box>
