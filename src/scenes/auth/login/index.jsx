@@ -12,10 +12,10 @@ const defaultTheme = createTheme();
 
 export default function AuthPage() {
     return (
-        <div className="contentAuthPage" style={{backgroundColor: "#FAFAFA"}}>
+        <div className="contentAuthPage" style={{ backgroundColor: "#FAFAFA" }}>
             <div className="authPage">
                 <ThemeProvider theme={defaultTheme}>
-                    <Grid container component="main" sx={{ height: '50%', width: '100vw'}} id="grid">
+                    <Grid container component="main" sx={{ height: '50%', width: '100vw' }} id="grid">
                         <CssBaseline />
                         <Grid
                             item
@@ -31,6 +31,7 @@ export default function AuthPage() {
                         />
                         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                             <Routes>
+                                <Route path="/" element={<SignIn />} />
                                 <Route path="auth/signin" element={<SignIn />} />
                                 <Route path="auth/signup" element={<SignUp />} />
                             </Routes>
