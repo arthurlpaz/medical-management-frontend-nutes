@@ -31,6 +31,7 @@ export default function AuthPage() {
                         />
                         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                             <Routes>
+                                <Route path="/" element={<SignIn />} />
                                 <Route path="auth/signin" element={<SignIn />} />
                                 <Route path="auth/signup" element={<SignUp />} />
                             </Routes>

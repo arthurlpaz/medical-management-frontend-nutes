@@ -40,15 +40,11 @@ function SignIn() {
 
     const navigate = useNavigate();
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyYmZmZDAwNDE2OTNiNjJjZTdiZSIsImlhdCI6MTY5NDQ4NjA1NSwiZXhwIjoxNjk1MDkwODU1fQ.E0va0yfi0k9GaD5_MkITEgAkhPBb2RiVDOVAlMBml-0";
-
     const handleLogin = async (event) => {
         event.preventDefault();
         
         try {
-            navigate("/Home");
             const data = {email, password};
-            console.log(data);
             await signIn(data);
         }
         catch(err) {

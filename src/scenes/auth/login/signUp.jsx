@@ -47,7 +47,6 @@ function SignUp() {
         try {
             const data = { name, email, password, confirmPassword };
 
-            console.log(data);
 
             await signUp(data);
             setIsRegistered(true);
