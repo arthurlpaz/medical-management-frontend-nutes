@@ -1,13 +1,9 @@
 import { Box, IconButton, TextField,Dialog, Button, Typography, useTheme } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import DeleteIcon from "@mui/icons-material/Delete";
 import { PerfilContext } from "../../context/PerfilContext";
 import { useState, useContext } from "react";
 import { useEffect } from "react";
 import EditFormPerfil from "./EditFormPerfil";
-import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 
 const PerfilMedic = ({perfil}) =>{

@@ -1,14 +1,9 @@
 import Pacient from "./Pacient";
 import { Box, IconButton, Typography, useTheme, Dialog, Button } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { useContext, useState } from "react";
 import { PacientContext } from "../../context/PacientsContext";
 import { useEffect } from "react";
-import AddFormPacients from "./AddFormPacients";
 
 const PacientsListInjured = () => {
 

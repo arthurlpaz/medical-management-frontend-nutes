@@ -31,6 +31,8 @@ const EditFormPerfil = ({thePerfil}) =>{
     const handleSubmitPerfil = (e) =>{
         e.preventDefault();
         updatePerfil(id, updatedPerfil)
+
+        window.location.reload();
     }
 
     return(

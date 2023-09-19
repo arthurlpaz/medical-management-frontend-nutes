@@ -54,9 +54,6 @@ export default function MenuUser() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem><EditIcon style={{marginRight: '0.5vh', color: theme.palette.mode === "dark" ? colors.greenAccent[500] : "black"}}/>
-                    Editar Usuario
-                </MenuItem>
                 <MenuItem onClick={handleLogout} style={{color: "red"}}><LogoutIcon style={{marginRight: '0.5vh', color: "red"}}/>
                     Sair
                 </MenuItem>

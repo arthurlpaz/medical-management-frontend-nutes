@@ -239,7 +239,7 @@ const Calendar = () =>{
                             initialEvents={[
                                 { id: nanoid(), title: "All-day event", date: "2023-07-14" },
                                 { id: nanoid(), title: "Timed event", date: "2023-07-22" },
-                                { id: nanoid(), title: "Project Apresentation", date: "2023-09-12"}
+                                { id: nanoid(), title: "Project Apresentation", date: "2023-09-13"}
                             ]}
                         />
                     </Box>

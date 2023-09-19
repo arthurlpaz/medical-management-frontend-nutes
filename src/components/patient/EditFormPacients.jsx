@@ -22,14 +22,14 @@ const EditFormPacient =({thePacient}) =>{
     const[number, setNumber] = useState(thePacient.number);
     const[city, setCity] = useState(thePacient.city);
     const[age, setAge] = useState(thePacient.age);
-    const[genre, setGenre] = useState(thePacient.genre)
+    const[gender, setGender] = useState(thePacient.gender)
     const[height, setHeight] = useState(thePacient.height)
     const[weight, setWeight] = useState(thePacient.weight)
     const[contact_emergency, setContactEmergency] = useState(thePacient.contact_emergency)
     const[contact_personal, setContactPersonal] = useState(thePacient.contact_personal)
     const[injured, setInjured] = useState(thePacient.injured)
 
-    const updatedPacient = {id,name, email, street, number, city, age, genre, height, weight, contact_emergency, contact_personal, injured}
+    const updatedPacient = {id,name, email, street, number, city, age, gender, height, weight, contact_emergency, contact_personal, injured}
 
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -100,9 +100,9 @@ const EditFormPacient =({thePacient}) =>{
                     <InputLabel><Typography variant="h5">Gênero</Typography></InputLabel>
                     <Input
                         type="text"
-                        name="genre"
-                        value={genre}
-                        onChange={(e) => setGenre(e.target.value)}
+                        name="gender"
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
                         />
                 </FormControl>
                 <FormControl sx={{ m: "10px  20px 10px", p: "10px" }}>
